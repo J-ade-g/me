@@ -661,21 +661,40 @@ const articles = [
 
 <h4>Context 的三个层次</h4>
 
-<svg viewBox="0 0 560 200" style="max-width:100%;margin:1.2rem 0" aria-hidden="true">
-  <rect x="20" y="30" width="520" height="42" rx="4" fill="#fff" stroke="#8b7eaa"/>
-  <text x="40" y="48" font-size="12" fill="#8b7eaa" font-weight="700" text-anchor="start">MEMORY 层</text>
-  <text x="135" y="48" font-size="12" fill="#1f1a18" text-anchor="start">长期记忆 · 跨 Session 持久化 · 用户人格画像、偏好、历史关键事件</text>
-  <text x="40" y="62" font-size="10" fill="#8a827c" text-anchor="start">例：Soul Agent 持续学习用户的表达风格，在每次对话中镜像模仿</text>
+<svg viewBox="0 0 600 300" style="max-width:100%;margin:1.5rem 0" aria-hidden="true">
+  <!-- Outer: MEMORY -->
+  <rect x="20" y="10" width="560" height="280" rx="8" fill="#fafaf6" stroke="#8b7eaa" stroke-width="2"/>
+  <rect x="20" y="10" width="560" height="36" rx="8" fill="#f3f0f7"/>
+  <rect x="20" y="28" width="560" height="18" fill="#f3f0f7"/>
+  <text x="40" y="34" font-size="15" fill="#7a6e8a" font-weight="700" font-family="Switzer, sans-serif">MEMORY</text>
+  <text x="130" y="34" font-size="13" fill="#8a827c" font-family="Switzer, sans-serif">长期记忆 · 跨 Session 持久 · 用户人格画像与偏好</text>
 
-  <rect x="20" y="88" width="520" height="42" rx="4" fill="#fff" stroke="#e0dbd4"/>
-  <text x="40" y="106" font-size="12" fill="#7a6e8a" font-weight="700" text-anchor="start">SESSION 层</text>
-  <text x="150" y="106" font-size="12" fill="#1f1a18" text-anchor="start">当前会话上下文 · 意图链跟踪 · 话题切换检测</text>
-  <text x="40" y="120" font-size="10" fill="#8a827c" text-anchor="start">例：32 个散乱意图 → 精简为 18 个，4 层分类体系（流程 / Soul / 行为 / 场景）</text>
+  <!-- Middle: SESSION -->
+  <rect x="55" y="65" width="495" height="110" rx="6" fill="#fff" stroke="#d6cec4" stroke-width="1.5"/>
+  <rect x="55" y="65" width="495" height="30" rx="6" fill="#f6f4f0"/>
+  <rect x="55" y="80" width="495" height="15" fill="#f6f4f0"/>
+  <text x="75" y="86" font-size="14" fill="#6b6f5e" font-weight="700" font-family="Switzer, sans-serif">SESSION</text>
+  <text x="165" y="86" font-size="13" fill="#8a827c" font-family="Switzer, sans-serif">当前会话上下文 · 意图链跟踪 · 话题切换</text>
+  <text x="75" y="108" font-size="12" fill="#a09890" font-family="Switzer, sans-serif">例：32 个散乱意图精简为 18 个 → 流程 / Soul / 行为 / 场景 四层分类</text>
 
-  <rect x="20" y="146" width="520" height="42" rx="4" fill="#fff" stroke="#e0dbd4"/>
-  <text x="40" y="164" font-size="12" fill="#6b7a6e" font-weight="700" text-anchor="start">TURN 层</text>
-  <text x="130" y="164" font-size="12" fill="#1f1a18" text-anchor="start">实时交互 · 打断处理 · ASR 完整度 · 本轮意图识别 + 回应生成</text>
-  <text x="40" y="178" font-size="10" fill="#8a827c" text-anchor="start">例：语音连麦中支持实时打断、多意图承接、冷启动协议设计</text>
+  <!-- Inner: TURN -->
+  <rect x="90" y="118" width="430" height="42" rx="5" fill="#fafaf7" stroke="#e0dbd4" stroke-width="1.2"/>
+  <text x="110" y="136" font-size="13" fill="#6b7a6e" font-weight="700" font-family="Switzer, sans-serif">TURN</text>
+  <text x="170" y="136" font-size="13" fill="#8a827c" font-family="Switzer, sans-serif">实时交互 · 打断 · ASR · 本轮意图 → 回应</text>
+  <text x="110" y="152" font-size="11" fill="#a09890" font-family="Switzer, sans-serif">例：语音连麦实时打断、多意图承接、冷启动协议</text>
+
+  <!-- Arrow annotations -->
+  <line x1="40" y1="200" x2="40" y2="275" stroke="#d6cec4" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="55" y="218" font-size="11" fill="#a09890" font-family="Switzer, sans-serif">跨对话持久化</text>
+  <text x="55" y="234" font-size="11" fill="#a09890" font-family="Switzer, sans-serif">用户离开后仍然保留</text>
+
+  <line x1="280" y1="180" x2="280" y2="275" stroke="#d6cec4" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="295" y="218" font-size="11" fill="#a09890" font-family="Switzer, sans-serif">一次对话内有效</text>
+  <text x="295" y="234" font-size="11" fill="#a09890" font-family="Switzer, sans-serif">意图链在 Session 中延续</text>
+
+  <line x1="460" y1="165" x2="460" y2="275" stroke="#d6cec4" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="475" y="218" font-size="11" fill="#a09890" font-family="Switzer, sans-serif">毫秒级响应</text>
+  <text x="475" y="234" font-size="11" fill="#a09890" font-family="Switzer, sans-serif">本轮消息内完成</text>
 </svg>
 
 <h4>WooMoo 的 Context 实践</h4>
