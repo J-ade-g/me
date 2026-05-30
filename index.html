@@ -606,29 +606,76 @@
 // ── Garden Articles Data ──
 const articles = [
   {
-    id: "a1", date: "2026.05", tag: "产品认知",
-    title: "产品经理最重要的不是经验，而是底层综合能力",
-    body: `<p>沟通能力、用户同理心、商业化。AI 时代被进一步放大的能力：表达能力、审美、快速学习迭代、好奇心和创造欲。</p>
-<p>人用不出自己认知之外的 token。AI 本质上是认知和偏见的放大器。</p>
-<p>系统思维：匿名登录 → 需要考虑投放机器人识别、运营侧自然流识别、合规风险、后续建联渠道。</p>
-<p>未来产品会逐渐服务于 Agent，什么时候封装为 MCP、Skill 等，是需要提前思考的问题。</p>`
+    id: "a1", date: "2026.05", tag: "产品方法",
+    title: "AI 产品的判断力与方法",
+    body: `<p>AI 时代的产品经理，最重要的不是经验，而是底层综合能力。</p>
+<p>沟通能力、用户同理心、商业化直觉。这些在 AI 时代被进一步放大的能力：表达能力、审美、快速学习迭代、好奇心和创造欲。人用不出自己认知之外的 token——AI 本质上是认知和偏见的放大器。</p>
+
+<h4>需求成立的唯一前提</h4>
+<p>在什么场景下，解决用户的什么问题。就这么一句话。绝对不能盲抄竞品。</p>
+
+<h4>案例：WooMoo 竞品功能下线决策</h4>
+<p>在 WooMoo 语音塔罗项目中，竞品标配的一个功能被灰度上线。我通过 PostHog 漏斗追踪和数据验证，发现它对核心转化链路<strong>没有任何正向贡献</strong>。主动决策下线——不是功能不好，是不适合我们。</p>
+<p>这个决策的背后逻辑就是「一句话前提」：用户在这个场景下，需要这个功能解决什么问题？如果答案不成立，就砍。</p>
+
+<svg viewBox="0 0 600 240" style="max-width:100%;margin:1.2rem 0" aria-hidden="true">
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#8b7eaa"/></marker>
+  </defs>
+  <rect x="20" y="20" width="160" height="52" rx="4" fill="#fff" stroke="#e0dbd4"/>
+  <text x="100" y="42" text-anchor="middle" font-size="13" fill="#1f1a18" font-weight="600">竞品有某功能</text>
+  <text x="100" y="58" text-anchor="middle" font-size="11" fill="#8a827c">→ 大家都在做</text>
+  <line x1="180" y1="46" x2="230" y2="46" stroke="#8b7eaa" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="236" y="20" width="160" height="52" rx="4" fill="#fff" stroke="#e0dbd4"/>
+  <text x="316" y="42" text-anchor="middle" font-size="13" fill="#1f1a18" font-weight="600">灰度上线验证</text>
+  <text x="316" y="58" text-anchor="middle" font-size="11" fill="#8a827c">PostHog 漏斗追踪</text>
+  <line x1="396" y1="46" x2="446" y2="46" stroke="#8b7eaa" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="452" y="14" width="130" height="42" rx="4" fill="#f3f0f7" stroke="#8b7eaa"/>
+  <text x="517" y="40" text-anchor="middle" font-size="13" fill="#1f1a18" font-weight="600">核心链路无贡献</text>
+  <line x1="517" y1="56" x2="517" y2="80" stroke="#8b7eaa" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="440" y="86" width="154" height="42" rx="4" fill="#fff" stroke="#e0dbd4"/>
+  <text x="517" y="112" text-anchor="middle" font-size="13" fill="#1f1a18" font-weight="600">决策：主动下线</text>
+  <text x="100" y="170" font-size="11" fill="#8a827c">核心原则：在什么场景下，解决用户什么问题？</text>
+  <text x="100" y="188" font-size="11" fill="#8a827c">如果答案不成立 —— 不做，或者砍掉。</text>
+  <rect x="10" y="150" width="580" height="58" rx="4" fill="none" stroke="#e0dbd4" stroke-dasharray="4,3"/>
+</svg>
+
+<h4>系统思维</h4>
+<p>做产品决策不仅要看功能本身。匿名登录 → 需要考虑投放机器人识别、运营侧自然流识别、合规风险、后续建联渠道。一个决策牵扯全局。</p>`
   },
   {
-    id: "a2", date: "2026.04", tag: "产品方法",
-    title: "需求成立的一句话前提",
-    body: `<p>在什么场景下解决用户什么问题 — 绝对不能盲抄竞品。</p>
-<p>竞品标配功能灰度上线后，数据验证对核心链路无正向贡献，主动决策下线。这就是需求一句话前提的价值：帮你识别什么该做，更重要的，什么不该做。</p>
-<p>不要因为别人有就觉得你也要有。从用户场景出发，不是从竞品功能表出发。</p>`
+    id: "a2", date: "2026.01", tag: "AI 产品",
+    title: "AI 产品的内核：Context 与 Session",
+    body: `<p>AI 产品与用户的关系，不是一次性交互，而是持续的、有记忆的对话。Context 管理决定了 AI 是否「记得」，Session 管理决定了对话体验是否流畅。两者合在一起，是 AI 产品能否和用户建立长期关系的核心。</p>
+
+<h4>Context 的三个层次</h4>
+
+<svg viewBox="0 0 560 200" style="max-width:100%;margin:1.2rem 0" aria-hidden="true">
+  <rect x="20" y="30" width="520" height="42" rx="4" fill="#fff" stroke="#8b7eaa"/>
+  <text x="40" y="48" font-size="12" fill="#8b7eaa" font-weight="700" text-anchor="start">MEMORY 层</text>
+  <text x="135" y="48" font-size="12" fill="#1f1a18" text-anchor="start">长期记忆 · 跨 Session 持久化 · 用户人格画像、偏好、历史关键事件</text>
+  <text x="40" y="62" font-size="10" fill="#8a827c" text-anchor="start">例：Soul Agent 持续学习用户的表达风格，在每次对话中镜像模仿</text>
+
+  <rect x="20" y="88" width="520" height="42" rx="4" fill="#fff" stroke="#e0dbd4"/>
+  <text x="40" y="106" font-size="12" fill="#7a6e8a" font-weight="700" text-anchor="start">SESSION 层</text>
+  <text x="150" y="106" font-size="12" fill="#1f1a18" text-anchor="start">当前会话上下文 · 意图链跟踪 · 话题切换检测</text>
+  <text x="40" y="120" font-size="10" fill="#8a827c" text-anchor="start">例：32 个散乱意图 → 精简为 18 个，4 层分类体系（流程 / Soul / 行为 / 场景）</text>
+
+  <rect x="20" y="146" width="520" height="42" rx="4" fill="#fff" stroke="#e0dbd4"/>
+  <text x="40" y="164" font-size="12" fill="#6b7a6e" font-weight="700" text-anchor="start">TURN 层</text>
+  <text x="130" y="164" font-size="12" fill="#1f1a18" text-anchor="start">实时交互 · 打断处理 · ASR 完整度 · 本轮意图识别 + 回应生成</text>
+  <text x="40" y="178" font-size="10" fill="#8a827c" text-anchor="start">例：语音连麦中支持实时打断、多意图承接、冷启动协议设计</text>
+</svg>
+
+<h4>WooMoo 的 Context 实践</h4>
+<p>在 AI 语音塔罗中，Soul Agent 作为人格层持续进化——用户的语言风格、常用词汇、情感倾向，在每次对话后更新。下次对话时，Agent 可以镜像模仿，创造「AI 认识我」的陪伴感。</p>
+<p>这是 Context 管理从技术概念变成用户感知的关键一跃。</p>
+
+<h4>未来的 Agent 化</h4>
+<p>AI 产品将逐渐服务于两类用户：人类用户和 Agent 用户。什么时候把功能封装为 MCP 工具？什么时候作为 Skill 暴露？Context 管理也要从「人-AI」扩展到「人-Agent-工具」的三方关系。</p>`
   },
   {
-    id: "a3", date: "2026.01", tag: "AI 产品",
-    title: "AI 产品的核心竞争力：Context 管理和 Session 管理",
-    body: `<p>Memory、连续性、个性化进化 — 这是 AI 和用户交朋友的前提。</p>
-<p>AI 产品与用户的关系不是一次性交互，而是持续的、有记忆的对话。Context 管理决定了 AI 是否「记得」之前的对话，Session 管理决定了单次交互的体验质量。</p>
-<p>未来产品会逐渐服务于 Agent，需要思考什么时候封装为 MCP、Skill。产品从面向人类用户，扩展到面向 Agent 用户。</p>`
-  },
-  {
-    id: "a4", date: "2026.05", tag: "认知",
+    id: "a3", date: "2026.05", tag: "认知",
     title: "AI 时代的组织与个体",
     body: `<p>杰克·多西把这次缩编的理由压成一句话：智能工具正在改变建立公司与运营公司的含义。更小的团队用上这些工具，可以做得更多，也可以做得更好。AI 从「辅助提速的工具」变为「默认的基础设施」。</p>
 <p>工具能力上来之后，初稿生成与多轮迭代的速度上升，检索、归纳、校对的边际成本下降，流程开始变短，任务被更快地收口到少数人手里，甚至由同一个小组端到端完成。</p>
@@ -637,7 +684,7 @@ const articles = [
 <p>对个体而言，更现实的挑战不在于学会用某个工具，而在于建立更强的业务判断与结构化能力，让工具围绕自己的问题定义工作，并把结果交付出来。</p>`
   },
   {
-    id: "a5", date: "2026.05", tag: "AI 实践",
+    id: "a4", date: "2026.05", tag: "AI 实践",
     title: "使用 AI 的三条铁律",
     body: `<p><strong>第一条：以最终结果为导向。</strong></p>
 <p>给 AI 设定目标的时候，穷尽想象力给它设置一个最终目标，而不是阶段性目标。不是说「去修这个 bug」，而是「我要在一周内进入贡献榜前 20」。怎么进？改文档、修 bug 还是优化代码？那是 AI 要思考的事。</p>
@@ -652,20 +699,106 @@ const articles = [
 <p>把你下一个 prompt 从「帮我写一个 XXX」改成「你是这个领域前十名的专家，我要实现 XXX 结果」。注意是「前十名的人」，不是「最好的一个人」——能力会更全面。</p>`
   },
   {
-    id: "a6", date: "2026.05", tag: "创作",
-    title: "产品即表达",
-    body: `<p>现在产品已经是一种内容了。过去你通过录抖音表达自己，写文章表达自己，跳舞表达自己。现在谁都能做产品，那产品就是你的表达方式。里面映射着你这个人的人格、你的洞察、你关心的事。</p>
-<p>从你的第一个产品开始，就持续地做。Dots connected。最后肯定是有用的。</p>
-<p>很多人把连续做项目当作一个励志的故事：失败了三十多次，最后一次成功了。但这不对——没有之前那三十多个，就没有最后一个。所有的项目积累下来，成为你下一件事情的武器库。</p>
-<p>很多做 AI 的人在做「更强」的 AI，但更稀缺的是在做「更温情」的 AI。</p>`
+    id: "a5", date: "2026.05", tag: "建造",
+    title: "建造者宣言",
+    body: `<p><strong>产品即表达。</strong>过去你通过录抖音表达自己，写文章表达自己。现在谁都能做产品，产品就是你的表达方式。里面映射着你这个人的人格、你的洞察、你关心的事。</p>
+
+<p>很多做 AI 的人在做「更强」的 AI。更稀缺的，是在做「更温情」的 AI。</p>
+
+<h4>Dots connected</h4>
+<p>Peter 在 OpenClaw 之前做了 30 多个项目。外界把这当作一个励志故事：失败了三十多次，最后一次成功了。但他自己很不认可这种说法——没有之前那三十多个，就没有 OpenClaw。他把 30 个项目全都接到 OpenClaw 里，给 Agent 做了一套工具箱：发 Twitter、截图、连 Telegram，全是之前项目的积累。</p>
+<p>从你的第一个产品开始，就持续地做。所有的项目积累下来，成为你下一件事情的武器库。</p>
+
+<h4>黑客松是下一个大学</h4>
+<p>大学会消失，黑客松会是下一个大学。黑客松的队友就是同学，创办者就是校长，队长就是班长。黑客松的核心是 builder 精神——想尽办法完成某个目标，而不是先学 A 再学 B 再学 C 才能 build。</p>
+<p>厚积薄发是老登思路。你打完几场黑客松，比你上大学 CS 强太多了。你有自己的 project，自己的 connection，自己的见解。</p>
+
+<svg viewBox="0 0 500 140" style="max-width:100%;margin:1.2rem 0" aria-hidden="true">
+  <rect x="10" y="20" width="100" height="32" rx="4" fill="#fff" stroke="#e0dbd4"/>
+  <text x="60" y="41" text-anchor="middle" font-size="11" fill="#1f1a18" font-weight="600">感知之门</text>
+  <line x1="110" y1="36" x2="148" y2="36" stroke="#8b7eaa" stroke-width="1.5"/>
+  <rect x="150" y="20" width="100" height="32" rx="4" fill="#fff" stroke="#e0dbd4"/>
+  <text x="200" y="41" text-anchor="middle" font-size="11" fill="#1f1a18" font-weight="600">tot-sudoku</text>
+  <line x1="250" y1="36" x2="288" y2="36" stroke="#8b7eaa" stroke-width="1.5"/>
+  <rect x="290" y="20" width="100" height="32" rx="4" fill="#fff" stroke="#e0dbd4"/>
+  <text x="340" y="41" text-anchor="middle" font-size="11" fill="#1f1a18" font-weight="600">WooMoo 塔罗</text>
+  <line x1="390" y1="36" x2="428" y2="36" stroke="#8b7eaa" stroke-width="1.5"/>
+  <rect x="430" y="20" width="55" height="32" rx="4" fill="#f3f0f7" stroke="#8b7eaa"/>
+  <text x="457" y="41" text-anchor="middle" font-size="11" fill="#1f1a18" font-weight="600">...</text>
+  <text x="250" y="82" text-anchor="middle" font-size="26" fill="#8b7eaa">&darr;</text>
+  <rect x="140" y="98" width="220" height="32" rx="4" fill="#fff" stroke="#8b7eaa" stroke-width="1.5"/>
+  <text x="250" y="119" text-anchor="middle" font-size="12" fill="#1f1a18" font-weight="600">下一件事的武器库</text>
+</svg>
+
+<p>学习的最佳路径不是先掌握所有知识再开始做，而是以建造为目标，在解决问题的过程中学习你需要的一切。</p>`
   },
   {
-    id: "a7", date: "2026.05", tag: "学习",
-    title: "黑客松是下一个大学",
-    body: `<p>大学会消失，黑客松会是下一个大学。</p>
-<p>黑客松的队友就是同学，黑客松的创办者就是校长，黑客松的队长就是班长。黑客松就是想尽办法完成某个目标——builder 精神，而不是先学 A 再学 B 再学 C 才能 build。</p>
-<p>厚积薄发是老登思路。你打完几场黑客松，比你上大学 CS 强太多了。你有自己的 project，有自己的 connection，有自己的见解。</p>
-<p>学习的最佳路径不是先掌握所有知识再开始做，而是以建造为目标，在解决问题的过程中学习你需要的一切。</p>`
+    id: "a6", date: "2026.05", tag: "设计方法",
+    title: "Design Thinking & Agentic Design Thinking",
+    body: `<h4>Design Thinking 核心步骤</h4>
+<p><strong>共情</strong></p>
+<p>AEIOU 方法（活动、环境、互动、物体、用户）。提出假设，使用 Jobs-to-be-Done 框架。保持「来自外星球的人般的好奇心」，随机访谈发现隐形需求，不断追问为什么。</p>
+<p>关键原则：不直接相信用户给出的解决方案——这只是他们对问题的猜测解法，不是问题本身。追问：为什么你需要它？如果没有，你真正困扰的是什么？一定要考虑情景：同一个人在不同时间、压力、环境下，行为不同。</p>
+<p>工具：Persona 卡片、Empathy Map、POV（point of view statement）、SCAMPER。</p>
+<p><strong>Agentic Design Thinking</strong></p>
+<p>AI 时代的设计方法升级：用 AI 做 deep research，借助分析框架生成洞察，用 Gemini 等模型整理用户访谈。原型阶段使用 Figma、Lovart、Uizard、V0、Bolt、Dify 等工具快速迭代。</p>
+<p>核心不变：共情 → 定义 → 构思 → 原型 → 测试。变了的是每个环节都能被 AI 加速。</p>`
+  },
+  {
+    id: "a7", date: "2026.05", tag: "提示词工程",
+    title: "提示词工程：参数、策略与设计优化",
+    body: `<h4>关键参数</h4>
+<p><strong>Temperature & Top_p</strong>：核采样技术，控制结果的确定性。需要准确答案时调低，需要多样化输出时调高。一般建议两个参数只调一个。</p>
+<p><strong>Max Length</strong>：控制生成的 token 数，防止冗长响应并控制成本。</p>
+<p><strong>Stop Sequences</strong>：指定停止字符串，控制响应长度和结构的另一种方式。</p>
+<p><strong>Frequency Penalty</strong>：惩罚已出现过的 token，减少重复。出现次数越多惩罚越大。</p>
+<p><strong>Presence Penalty</strong>：惩罚重复 token，但对所有重复一视同仁。适用于需要多样化或创造性文本的场景。</p>
+<p><strong>Stream = true</strong>：流式输出。</p>
+<hr>
+<h4>推理策略</h4>
+<p><strong>Zero-shot / Few-shot</strong>：测试通用能力 vs 提供示例引导。</p>
+<p><strong>CoT（Chain of Thought）</strong>：逐步推理解决复杂问题。Auto-CoT 自动生成推理链。</p>
+<p><strong>自洽性提示</strong>：多次询问同一问题，多数投票确定最终答案。</p>
+<p><strong>生成知识</strong>：先要求模型生成相关知识，再利用这些知识辅助回答。</p>
+<p><strong>Reflection</strong>：翻译专家 + 评估专家，自我审视输出质量。</p>
+<p><strong>ReAct</strong>：CoT 解决「怎么推理」，ReAct 解决「推理 + 与外部世界交互」。</p>
+<p><strong>ToT（Tree of Thoughts）</strong>：在多个推理路径间搜索，而非线性推进。</p>
+<p><strong>知识链 CoK</strong>：把复杂问题拆成子问题，逐步检索，每一步作为下一步的基础。</p>
+<p><strong>Least-to-Most</strong>：将复杂任务分解为多个子任务，从简单到复杂逐步解决。</p>
+<hr>
+<h4>设计与优化</h4>
+<p><strong>结构化提示词</strong>：根据实际情况组合使用——标题和标签、分隔符、预定义格式、示例、上下文信息、明确指令、角色设定、输出格式要求、多轮对话结构、条件和约束。不要套刻板模板。</p>
+<p><strong>角色扮演</strong>：使用 system / user / assistant 三层结构，XML 标签组织复杂输入。</p>
+<p><strong>Meta Prompt</strong>：设计高层次提示词，指导模型生成更具体的提示词。算法自动优化：遗传算法、引入验证、自动调整。</p>
+<p><strong>思考模式下</strong>：慎用 CoT，规避 few-shot，尽量简洁明了地表达。</p>`
+  },
+  {
+    id: "a8", date: "2026.05", tag: "技术",
+    title: "RAG 核心概念",
+    body: `<p>RAG（Retrieval-Augmented Generation）检索增强生成：结合信息检索和生成式模型的技术，让 LLM 在回答时引用外部知识库。</p>
+<h4>三大核心组件</h4>
+<p><strong>预处理器</strong>：对文档进行清洗、分割、向量化后存入知识库。工具如 pdfminer.six。</p>
+<p><strong>检索器</strong>：基于关键词检索（如 Elastic Search）、基于向量的相似度检索。从知识库中找到与用户 query 最相关的内容。</p>
+<p><strong>生成器</strong>：根据检索到的内容和用户 query，生成最终回答。核心是将「找到的知识」和「生成能力」结合起来。</p>
+<h4>关键概念</h4>
+<p><strong>Text Embedding</strong>：将文本转化为向量，使语义相似的文本在向量空间中距离更近。</p>
+<p><strong>Embedding Space</strong>：所有向量存在的空间，检索在此空间中通过距离计算完成。</p>
+<h4>与 Fine-tuning 的区别</h4>
+<p>RAG 是给模型「参考资料」，Fine-tuning 是改变模型本身。RAG 更灵活、成本更低、知识可随时更新。</p>`
+  },
+  {
+    id: "a9", date: "2026.05", tag: "工程",
+    title: "本地化部署与工作流",
+    body: `<p>将 AI 能力部署到本地环境或自有服务器，实现数据私有化、低延迟和成本可控。</p>
+<h4>部署层次</h4>
+<p>从云 API（如 OpenAI、通义千问）到本地模型（如 Ollama、vLLM），再到混合架构（敏感数据本地处理，通用能力调云 API）。选择取决于数据隐私要求、响应延迟要求、成本预算、模型能力需求。</p>
+<h4>工作流范式</h4>
+<p><strong>探索 → 计划 → 生成</strong></p>
+<p>不直接从需求跳到实现。先让 AI 探索多种可能方案，再制定执行计划，最后生成最终产出。适用于从代码生成到内容创作的各种场景。</p>
+<h4>API / SDK / Framework</h4>
+<p>从直接调用 API，到使用 SDK 封装，再到使用 Framework（如 LangChain、Dify）编排复杂工作流。抽象层次越高开发效率越高但灵活性越低。根据场景选择合适的抽象层次。</p>`
+  }
+];
   },
   {
     id: "a8", date: "2026.05", tag: "设计方法",
