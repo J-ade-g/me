@@ -212,36 +212,104 @@
   /* ═══════════ GARDEN ═══════════ */
   .garden-list { list-style: none; }
   .garden-item {
-    padding: 1.6rem 0;
     border-bottom: var(--border);
-    display: flex; gap: 2rem;
   }
   .garden-item:last-child { border-bottom: none; }
-  .garden-item .gi-date {
+  .garden-link {
+    display: flex; gap: 2rem;
+    padding: 1.6rem 0;
+    text-decoration: none; color: inherit;
+    cursor: pointer;
+    transition: padding-left 0.25s ease;
+  }
+  .garden-link:hover { padding-left: 0.6rem; }
+  .garden-link:hover .gi-arrow { opacity: 1; transform: translateX(0); }
+  .garden-link .gi-date {
     font-size: 0.9rem; font-weight: 500;
     color: var(--lavender);
     flex-shrink: 0; min-width: 5.5rem;
     padding-top: 0.06rem;
   }
-  .garden-item h4 {
+  .garden-link h4 {
     font-size: 1.25rem; font-weight: 600;
     letter-spacing: -0.01em;
-    margin-bottom: 0.25rem;
   }
-  .garden-item p {
-    font-size: 1rem; color: var(--muted);
-    line-height: 1.55;
+  .garden-link .gi-meta {
+    display: flex; align-items: center; gap: 0.7rem;
+    margin-top: 0.15rem;
   }
-  .garden-item .gi-tag {
+  .garden-link .gi-tag {
     display: inline-block;
     font-size: 0.68rem; font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--faint);
-    margin-top: 0.5rem;
-    padding: 0.28em 0.65em;
+    padding: 0.2em 0.55em;
     background: #f6f4f0;
     border-radius: 3px;
+  }
+  .garden-link .gi-arrow {
+    font-size: 1.1rem; color: var(--faint);
+    opacity: 0; transform: translateX(-6px);
+    transition: all 0.25s ease;
+  }
+
+  /* ── Article Overlay ── */
+  .article-overlay {
+    position: fixed; inset: 0;
+    background: rgba(250,250,247,0.96);
+    z-index: 200;
+    overflow-y: auto;
+    display: none;
+    backdrop-filter: blur(4px);
+  }
+  .article-overlay.open { display: block; }
+  .article-inner {
+    max-width: 680px; margin: 0 auto;
+    padding: 4rem 2rem 8rem;
+  }
+  .article-back {
+    display: inline-flex; align-items: center; gap: 0.3rem;
+    font-size: 0.82rem; font-weight: 600;
+    color: var(--muted); letter-spacing: 0.06em;
+    text-transform: uppercase; cursor: pointer;
+    background: none; border: none;
+    margin-bottom: 2.5rem;
+    transition: color 0.2s;
+  }
+  .article-back:hover { color: var(--lavender); }
+  .article-date {
+    font-size: 0.85rem; font-weight: 500;
+    color: var(--lavender);
+    margin-bottom: 0.6rem;
+  }
+  .article-inner h2 {
+    font-size: 2.2rem; font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    margin-bottom: 1.5rem;
+  }
+  .article-body {
+    font-size: 1.05rem; line-height: 1.8;
+    color: var(--text);
+  }
+  .article-body p { margin-bottom: 1.2rem; }
+  .article-body h4 {
+    font-size: 1.1rem; font-weight: 700;
+    margin: 2rem 0 0.5rem;
+  }
+  .article-body hr {
+    border: none; border-top: var(--border);
+    margin: 2rem 0;
+  }
+  .article-tag {
+    display: inline-block;
+    font-size: 0.68rem; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--faint);
+    padding: 0.25em 0.6em;
+    background: #f6f4f0; border-radius: 3px;
+    margin-bottom: 1.8rem;
   }
 
   /* ═══════════ WALK TOGETHER ═══════════ */
@@ -498,32 +566,7 @@
       <span class="sec-num">03</span>
       <span class="sec-name">Garden</span>
     </div>
-    <ul class="garden-list">
-      <li class="garden-item">
-        <span class="gi-date">2026.05</span>
-        <div>
-          <h4>产品经理最重要的不是经验，而是底层综合能力</h4>
-          <p>沟通能力、用户同理心、商业化。AI 时代被进一步放大的能力：表达能力、审美、快速学习迭代、好奇心和创造欲。人用不出自己认知之外的 token。</p>
-          <span class="gi-tag">产品认知</span>
-        </div>
-      </li>
-      <li class="garden-item">
-        <span class="gi-date">2026.04</span>
-        <div>
-          <h4>需求成立的一句话前提</h4>
-          <p>在什么场景下解决用户什么问题 — 绝对不能盲抄竞品。竞品标配功能灰度上线后，数据验证对核心链路无正向贡献，主动决策下线。</p>
-          <span class="gi-tag">产品方法</span>
-        </div>
-      </li>
-      <li class="garden-item">
-        <span class="gi-date">2026.01</span>
-        <div>
-          <h4>AI 产品的核心竞争力：Context 管理和 Session 管理</h4>
-          <p>Memory、连续性、个性化进化 — 这是 AI 和用户交朋友的前提。未来产品会逐渐服务于 Agent，需要思考什么时候封装为 MCP、Skill。</p>
-          <span class="gi-tag">AI 产品</span>
-        </div>
-      </li>
-    </ul>
+    <ul class="garden-list" id="garden-list"></ul>
   </section>
 
   <!-- ═══════ WALK TOGETHER ═══════ -->
@@ -545,6 +588,11 @@
 
 </div>
 
+<!-- ── Article Overlay ── -->
+<div class="article-overlay" id="article-overlay">
+  <div class="article-inner" id="article-inner"></div>
+</div>
+
 <footer>
   <div class="f-stats">
     <span>小红书 97.9K 赞藏</span>
@@ -553,5 +601,124 @@
   <p class="f-note">Built in public &middot; 2026 &middot; Ever-growing</p>
 </footer>
 
+
+<script>
+// ── Garden Articles Data ──
+const articles = [
+  {
+    id: "a1", date: "2026.05", tag: "产品认知",
+    title: "产品经理最重要的不是经验，而是底层综合能力",
+    body: `<p>沟通能力、用户同理心、商业化。AI 时代被进一步放大的能力：表达能力、审美、快速学习迭代、好奇心和创造欲。</p>
+<p>人用不出自己认知之外的 token。AI 本质上是认知和偏见的放大器。</p>
+<p>系统思维：匿名登录 → 需要考虑投放机器人识别、运营侧自然流识别、合规风险、后续建联渠道。</p>
+<p>未来产品会逐渐服务于 Agent，什么时候封装为 MCP、Skill 等，是需要提前思考的问题。</p>`
+  },
+  {
+    id: "a2", date: "2026.04", tag: "产品方法",
+    title: "需求成立的一句话前提",
+    body: `<p>在什么场景下解决用户什么问题 — 绝对不能盲抄竞品。</p>
+<p>竞品标配功能灰度上线后，数据验证对核心链路无正向贡献，主动决策下线。这就是需求一句话前提的价值：帮你识别什么该做，更重要的，什么不该做。</p>
+<p>不要因为别人有就觉得你也要有。从用户场景出发，不是从竞品功能表出发。</p>`
+  },
+  {
+    id: "a3", date: "2026.01", tag: "AI 产品",
+    title: "AI 产品的核心竞争力：Context 管理和 Session 管理",
+    body: `<p>Memory、连续性、个性化进化 — 这是 AI 和用户交朋友的前提。</p>
+<p>AI 产品与用户的关系不是一次性交互，而是持续的、有记忆的对话。Context 管理决定了 AI 是否「记得」之前的对话，Session 管理决定了单次交互的体验质量。</p>
+<p>未来产品会逐渐服务于 Agent，需要思考什么时候封装为 MCP、Skill。产品从面向人类用户，扩展到面向 Agent 用户。</p>`
+  },
+  {
+    id: "a4", date: "2026.05", tag: "认知",
+    title: "AI 时代的组织与个体",
+    body: `<p>杰克·多西把这次缩编的理由压成一句话：智能工具正在改变建立公司与运营公司的含义。更小的团队用上这些工具，可以做得更多，也可以做得更好。AI 从「辅助提速的工具」变为「默认的基础设施」。</p>
+<p>工具能力上来之后，初稿生成与多轮迭代的速度上升，检索、归纳、校对的边际成本下降，流程开始变短，任务被更快地收口到少数人手里，甚至由同一个小组端到端完成。</p>
+<p>于是，团队对人数的依赖降低，对关键人的判断力、整合力与交付责任依赖上升，组织的「人才密度」提高，层级与中间环节被压缩。</p>
+<p>人的角色更集中在定义问题、做取舍、承担结果，组织用更短的链路换取更快的闭环。招聘会更偏向能独立承担模块、能把工具嵌入业务流程、能对产出质量负责的人。</p>
+<p>对个体而言，更现实的挑战不在于学会用某个工具，而在于建立更强的业务判断与结构化能力，让工具围绕自己的问题定义工作，并把结果交付出来。</p>`
+  },
+  {
+    id: "a5", date: "2026.05", tag: "AI 实践",
+    title: "使用 AI 的三条铁律",
+    body: `<p><strong>第一条：以最终结果为导向。</strong></p>
+<p>给 AI 设定目标的时候，穷尽想象力给它设置一个最终目标，而不是阶段性目标。不是说「去修这个 bug」，而是「我要在一周内进入贡献榜前 20」。怎么进？改文档、修 bug 还是优化代码？那是 AI 要思考的事。</p>
+<p><strong>第二条：过程中不干预。</strong></p>
+<p>就像下围棋一样——AI 走了一步，你觉得反常识、反行业经验，就想微操。但实际上人家最后能赢你。控制住自己。像教育一样，像带小朋友一样——给他足够的 context，给他空间。你就去闯，最后结果我能兜底就行。</p>
+<p><strong>第三条：在风险可控的范围内，给予最高权限。</strong></p>
+<p>把所有工具、Context 都开放给它。让它自己试错，自己 Crash，自己 Fix。你会发现它的自我修复能力比人强得多。</p>
+<hr>
+<p><strong>抽卡模式 vs 画笔模式</strong></p>
+<p>画笔模式给你 70 分的确定性，抽卡模式给你一次 120 分的可能性。同一个任务跑 8-10 次，挑最好的那个。你肯定不是说一次就能跑成，可能会失败很多次。但要接受它失败之后的结果。它一旦抽中了，那个结果肯定比你用画笔要强太多了。</p>
+<p><strong>关于 Prompt</strong></p>
+<p>把你下一个 prompt 从「帮我写一个 XXX」改成「你是这个领域前十名的专家，我要实现 XXX 结果」。注意是「前十名的人」，不是「最好的一个人」——能力会更全面。</p>`
+  },
+  {
+    id: "a6", date: "2026.05", tag: "创作",
+    title: "产品即表达",
+    body: `<p>现在产品已经是一种内容了。过去你通过录抖音表达自己，写文章表达自己，跳舞表达自己。现在谁都能做产品，那产品就是你的表达方式。里面映射着你这个人的人格、你的洞察、你关心的事。</p>
+<p>从你的第一个产品开始，就持续地做。Dots connected。最后肯定是有用的。</p>
+<p>很多人把连续做项目当作一个励志的故事：失败了三十多次，最后一次成功了。但这不对——没有之前那三十多个，就没有最后一个。所有的项目积累下来，成为你下一件事情的武器库。</p>
+<p>很多做 AI 的人在做「更强」的 AI，但更稀缺的是在做「更温情」的 AI。</p>`
+  },
+  {
+    id: "a7", date: "2026.05", tag: "学习",
+    title: "黑客松是下一个大学",
+    body: `<p>大学会消失，黑客松会是下一个大学。</p>
+<p>黑客松的队友就是同学，黑客松的创办者就是校长，黑客松的队长就是班长。黑客松就是想尽办法完成某个目标——builder 精神，而不是先学 A 再学 B 再学 C 才能 build。</p>
+<p>厚积薄发是老登思路。你打完几场黑客松，比你上大学 CS 强太多了。你有自己的 project，有自己的 connection，有自己的见解。</p>
+<p>学习的最佳路径不是先掌握所有知识再开始做，而是以建造为目标，在解决问题的过程中学习你需要的一切。</p>`
+  }
+];
+
+// ── Render Garden ──
+const list = document.getElementById('garden-list');
+articles.forEach(a => {
+  const li = document.createElement('li');
+  li.className = 'garden-item';
+  li.innerHTML = `
+    <a class="garden-link" data-id="${a.id}">
+      <span class="gi-date">${a.date}</span>
+      <div>
+        <h4>${a.title}</h4>
+        <div class="gi-meta">
+          <span class="gi-tag">${a.tag}</span>
+          <span class="gi-arrow">&rarr;</span>
+        </div>
+      </div>
+    </a>`;
+  li.querySelector('.garden-link').addEventListener('click', () => openArticle(a.id));
+  list.appendChild(li);
+});
+
+// ── Article Overlay ──
+const overlay = document.getElementById('article-overlay');
+const inner   = document.getElementById('article-inner');
+
+function openArticle(id) {
+  const a = articles.find(x => x.id === id);
+  if (!a) return;
+  inner.innerHTML = `
+    <button class="article-back" onclick="closeArticle()">&larr; Garden</button>
+    <span class="article-tag">${a.tag}</span>
+    <span class="article-date">${a.date}</span>
+    <h2>${a.title}</h2>
+    <div class="article-body">${a.body}</div>`;
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  overlay.scrollTop = 0;
+}
+
+function closeArticle() {
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+overlay.addEventListener('click', e => {
+  if (e.target === overlay) closeArticle();
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeArticle();
+});
+</script>
 </body>
 </html>
