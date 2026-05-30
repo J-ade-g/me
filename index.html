@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gao Xinyi</title>
+<meta name="description" content="创造，表达，链接。把在这个世界穿梭时学到的东西，放在这里。">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600,700,800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #fafaf7;
+    --text:      #1f1a18;
+    --muted:     #8a827c;
+    --faint:     #c4beb7;
+    --beige:     #e8e2d9;
+    --beige-dk:  #d6cec4;
+    --lavender:  #8b7eaa;
+    --lavender-lt: #f3f0f7;
+    --white:     #fff;
+    --border:    1px solid #e0dbd4;
+    --radius:    6px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Switzer', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body::after {
+    content: '';
+    position: fixed; inset: 0;
+    pointer-events: none; z-index: 9999;
+    opacity: 0.022;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 140px 140px;
+  }
+
+  .wrap { max-width: 920px; margin: 0 auto; padding: 0 3rem; }
+
+  /* ── Nav ── */
+  nav {
+    padding: 2.2rem 0 0;
+    position: relative; z-index: 10;
+  }
+  nav .inner {
+    display: flex; gap: 3rem;
+    font-size: 0.95rem; font-weight: 500;
+    letter-spacing: 0.03em;
+    text-transform: lowercase;
+  }
+  nav a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  nav a:hover { color: var(--lavender); }
+
+  section { padding-top: 12rem; }
+
+  /* ═══════════ HERO ═══════════ */
+  .hero { padding-top: 7rem; }
+  .hero-inner { display: flex; gap: 2.8rem; align-items: flex-start; }
+  .hero-avatar {
+    width: 100px; height: 100px;
+    border-radius: 50%; object-fit: cover;
+    flex-shrink: 0;
+    filter: contrast(1.04);
+    border: 2px solid var(--beige-dk);
+  }
+  .hero-text { padding-top: 0.2rem; }
+  .hero-en {
+    font-size: 4rem; font-weight: 500;
+    line-height: 1.2; letter-spacing: -0.02em;
+    margin-bottom: 0.8rem;
+    color: var(--text);
+  }
+  .hero-en em {
+    font-style: normal;
+    background: linear-gradient(180deg, transparent 60%, var(--beige) 60%);
+  }
+  .hero-cn {
+    font-size: 1.4rem; color: var(--muted);
+    line-height: 1.55; font-weight: 400;
+  }
+
+  /* ═══════════ Section Labels ═══════════ */
+  .sec-label {
+    display: flex; align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 3.5rem;
+    padding-bottom: 1.2rem;
+    border-bottom: var(--border);
+  }
+  .sec-num {
+    font-size: 7rem; font-weight: 280;
+    color: var(--faint);
+    line-height: 0.8; letter-spacing: -0.03em;
+  }
+  .sec-name {
+    font-size: 1rem; font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ═══════════ ABOUT ═══════════ */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.7rem;
+  }
+  .about-card {
+    background: var(--white);
+    border: var(--border);
+    border-radius: var(--radius);
+    padding: 1.8rem 1.5rem;
+    transition: background 0.2s;
+  }
+  .about-card:hover { background: var(--beige); }
+  .about-card .ac-label {
+    font-size: 0.8rem; font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    margin-bottom: 0.65rem;
+    display: inline-block;
+    padding: 0.3em 0.6em;
+    border-radius: 3px;
+  }
+  .about-card:nth-child(1) .ac-label { color: #8b6f5e; background: #f5efe8; }
+  .about-card:nth-child(2) .ac-label { color: #7a6e8a; background: var(--lavender-lt); }
+  .about-card:nth-child(3) .ac-label { color: #6b7a6e; background: #edf2ed; }
+  .about-card:nth-child(4) .ac-label { color: #8a6e6e; background: #faf2f0; }
+
+  .about-card p { font-size: 1.15rem; line-height: 1.55; color: var(--text); }
+
+  /* ═══════════ BUILD ═══════════ */
+  .build-group { margin-bottom: 4rem; }
+  .build-group:last-child { margin-bottom: 0; }
+  .build-group-label {
+    font-size: 0.85rem; font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.2rem;
+    display: flex; align-items: center; gap: 0.55rem;
+  }
+  .build-group-label::before {
+    content: '';
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--faint);
+  }
+  .build-group.active   .build-group-label::before { background: #c44; }
+  .build-group.iter     .build-group-label::before { background: #c9a000; }
+  .build-group.done     .build-group-label::before { background: #5a9; }
+  .build-group.seed     .build-group-label::before { background: var(--faint); }
+
+  .build-cards {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+  }
+  .proj {
+    background: var(--white);
+    border: var(--border);
+    border-radius: var(--radius);
+    padding: 1.4rem 1.4rem 1.1rem;
+    display: flex; flex-direction: column; gap: 0.6rem;
+    transition: border-color 0.2s, background 0.2s;
+    color: inherit; text-decoration: none;
+  }
+  a.proj:hover { border-color: var(--lavender); background: #fefeff; }
+  .proj .p-top {
+    display: flex; justify-content: space-between;
+    align-items: center;
+  }
+  .proj .p-status {
+    font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .proj .p-date {
+    font-size: 0.75rem; color: var(--faint);
+  }
+  .proj h3 {
+    font-size: 1.35rem; font-weight: 650;
+    letter-spacing: -0.01em;
+  }
+  .proj .p-desc {
+    font-size: 1rem; color: var(--muted);
+    line-height: 1.5; flex: 1;
+  }
+  .proj .p-note {
+    font-size: 0.78rem; color: var(--faint);
+    font-style: italic;
+  }
+  .proj .p-bar {
+    height: 3px; background: #ece8e2;
+    border-radius: 2px; overflow: hidden;
+  }
+  .proj .p-bar-inner {
+    height: 100%; border-radius: 2px;
+  }
+  .proj .p-tags {
+    font-size: 0.75rem; color: var(--faint);
+    letter-spacing: 0.03em;
+  }
+
+  /* ═══════════ GARDEN ═══════════ */
+  .garden-list { list-style: none; }
+  .garden-item {
+    padding: 1.6rem 0;
+    border-bottom: var(--border);
+    display: flex; gap: 2rem;
+  }
+  .garden-item:last-child { border-bottom: none; }
+  .garden-item .gi-date {
+    font-size: 0.9rem; font-weight: 500;
+    color: var(--lavender);
+    flex-shrink: 0; min-width: 5.5rem;
+    padding-top: 0.06rem;
+  }
+  .garden-item h4 {
+    font-size: 1.25rem; font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.25rem;
+  }
+  .garden-item p {
+    font-size: 1rem; color: var(--muted);
+    line-height: 1.55;
+  }
+  .garden-item .gi-tag {
+    display: inline-block;
+    font-size: 0.68rem; font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--faint);
+    margin-top: 0.5rem;
+    padding: 0.28em 0.65em;
+    background: #f6f4f0;
+    border-radius: 3px;
+  }
+
+  /* ═══════════ WALK TOGETHER ═══════════ */
+  .walk-card {
+    background: var(--white);
+    border: var(--border);
+    border-radius: var(--radius);
+    padding: 3rem 2.5rem;
+    text-align: center;
+  }
+  .walk-card h2 {
+    font-size: 2.4rem; font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.7rem;
+  }
+  .walk-card .wsub {
+    font-size: 1.1rem; color: var(--muted);
+    line-height: 1.55;
+    margin-bottom: 2rem;
+  }
+  .walk-links {
+    display: flex; justify-content: center;
+    gap: 0.9rem; flex-wrap: wrap;
+  }
+  .walk-btn {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    padding: 0.7rem 1.4rem;
+    border: var(--border);
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: var(--text);
+    font-size: 1rem; font-weight: 500;
+    background: var(--white);
+    transition: all 0.18s;
+  }
+  .walk-btn:hover {
+    background: var(--lavender-lt);
+    border-color: var(--lavender);
+  }
+
+  /* ═══════════ FOOTER ═══════════ */
+  footer {
+    padding: 7rem 0 3.5rem;
+    text-align: center;
+  }
+  footer .f-stats {
+    display: flex; justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1.4rem;
+  }
+  footer .f-stats span {
+    font-size: 0.95rem; font-weight: 600;
+    color: var(--text);
+    background: var(--beige);
+    padding: 0.3em 0.9em;
+    border-radius: 4px;
+  }
+  footer .f-note {
+    font-size: 0.78rem; color: var(--faint);
+    letter-spacing: 0.04em;
+  }
+
+  @media (max-width: 640px) {
+    .wrap { padding: 0 1.5rem; }
+    section { padding-top: 7rem; }
+    .hero { padding-top: 5rem; }
+    .hero-inner { flex-direction: column; align-items: flex-start; gap: 1.6rem; }
+    .hero-en { font-size: 2.4rem; }
+    .hero-cn { font-size: 1.15rem; }
+    .sec-num { font-size: 4rem; }
+    .about-grid, .build-cards { grid-template-columns: 1fr; }
+    .garden-item { flex-direction: column; gap: 0.25rem; }
+    .walk-links { flex-direction: column; align-items: center; }
+    .walk-card h2 { font-size: 1.6rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <nav>
+    <div class="inner">
+      <a href="#about">about</a>
+      <a href="#build">build</a>
+      <a href="#garden">garden</a>
+      <a href="#walk">walk together</a>
+    </div>
+  </nav>
+
+  <!-- ═══════ HERO ═══════ -->
+  <section class="hero">
+    <div class="hero-inner">
+      <img class="hero-avatar" src="profile.jpg" alt="Gao Xinyi">
+      <div class="hero-text">
+        <p class="hero-en"><em>I build, I speak</em> &mdash; hope we can all live a little more awake, a little more at ease.</p>
+        <p class="hero-cn">创造，表达，链接。把在这个世界穿梭时学到的东西，放在这里。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ ABOUT ═══════ -->
+  <section id="about">
+    <div class="sec-label">
+      <span class="sec-num">01</span>
+      <span class="sec-name">About</span>
+    </div>
+    <div class="about-grid">
+      <div class="about-card">
+        <span class="ac-label">Where</span>
+        <p>南京大学 · 社会心理学<br>穿梭在心理学与技术的交叉处</p>
+      </div>
+      <div class="about-card">
+        <span class="ac-label">What</span>
+        <p>AI 产品实践者。从 Multi-Agent 架构到用户行为分析，从出海塔罗到 AI 心理干预。</p>
+      </div>
+      <div class="about-card">
+        <span class="ac-label">How</span>
+        <p>Learn in public. Build in public.<br>把建造过程和思考痕迹都放在阳光下。</p>
+      </div>
+      <div class="about-card">
+        <span class="ac-label">Why</span>
+        <p>相信技术和心理学可以在人内心世界交汇。建造工具，也建造理解。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ BUILD ═══════ -->
+  <section id="build">
+    <div class="sec-label">
+      <span class="sec-num">02</span>
+      <span class="sec-name">Build</span>
+    </div>
+
+    <div class="build-group active">
+      <p class="build-group-label">现在进行中</p>
+      <div class="build-cards">
+        <div class="proj">
+          <div class="p-top">
+            <span class="p-status">active</span>
+            <span class="p-date">2026.05</span>
+          </div>
+          <h3>Emotion Simulator</h3>
+          <p class="p-desc">多智能体情绪传染仿真系统。Personality × Emotion × Memory × Relationship 四维 Agent 模型，Rich 终端交互。</p>
+          <div class="p-bar"><div class="p-bar-inner" style="width:75%;background:#c44;"></div></div>
+          <p class="p-tags">Python · Multi-Agent · 本地开发中</p>
+        </div>
+        <a class="proj" href="https://github.com/J-ade-g/Xiaoyuhe" target="_blank" rel="noopener">
+          <div class="p-top">
+            <span class="p-status">active</span>
+            <span class="p-date">2026.04</span>
+          </div>
+          <h3>小愈盒 AI 心理干预</h3>
+          <p class="p-desc">基于循证治疗的即时自适应干预 Demo。记忆纸团、治愈档案馆 — 将情绪沉淀为数字资产。</p>
+          <div class="p-bar"><div class="p-bar-inner" style="width:60%;background:#c44;"></div></div>
+          <p class="p-tags">TypeScript · EBP · JITAI</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="build-group iter">
+      <p class="build-group-label">迭代中</p>
+      <div class="build-cards">
+        <a class="proj" href="https://github.com/J-ade-g/attack-trial" target="_blank" rel="noopener">
+          <div class="p-top">
+            <span class="p-status">iterating</span>
+            <span class="p-date">2026.03</span>
+          </div>
+          <h3>LLM Attack Framework</h3>
+          <p class="p-desc">AI 安全红队框架。57 次攻击，51% 成功率，6 策略族，自建 S0-S5 判定引擎。</p>
+          <div class="p-bar"><div class="p-bar-inner" style="width:85%;background:#c9a000;"></div></div>
+          <p class="p-tags">Python · AI Safety</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="build-group done">
+      <p class="build-group-label">可参观</p>
+      <div class="build-cards">
+        <div class="proj">
+          <div class="p-top">
+            <span class="p-status">completed</span>
+            <span class="p-date">2025.11 - 2026.04</span>
+          </div>
+          <h3>WooMoo AI 语音塔罗</h3>
+          <p class="p-desc">从 0 到 1 交付语音交互大版本。Multi-Agent 架构，32→18 意图精简，Soul 参数矩阵，三层 Open Loop 付费漏斗。</p>
+          <p class="p-note">公司项目，不可对外展示</p>
+          <div class="p-bar"><div class="p-bar-inner" style="width:100%;background:#5a9;"></div></div>
+          <p class="p-tags">AI Product · 出海</p>
+        </div>
+        <a class="proj" href="https://github.com/J-ade-g/ganzhi-zhimen" target="_blank" rel="noopener">
+          <div class="p-top">
+            <span class="p-status">completed</span>
+            <span class="p-date">2025.11</span>
+          </div>
+          <h3>感知之门 ganzhi-zhimen</h3>
+          <p class="p-desc">帮助都市人重新连接自然的全栈 Web App。通义千问 API 集成，多模态记录，数据分析后台。</p>
+          <div class="p-bar"><div class="p-bar-inner" style="width:100%;background:#5a9;"></div></div>
+          <p class="p-tags">Node.js · 通义千问 · MongoDB</p>
+        </a>
+        <a class="proj" href="https://github.com/J-ade-g/tot-sudoku" target="_blank" rel="noopener">
+          <div class="p-top">
+            <span class="p-status">completed</span>
+            <span class="p-date">2025</span>
+          </div>
+          <h3>tot-sudoku</h3>
+          <p class="p-desc">Tree of Thoughts 推理框架解数独。用大型语言模型模拟人类逐步推理过程，含完整方法论说明。</p>
+          <div class="p-bar"><div class="p-bar-inner" style="width:100%;background:#5a9;"></div></div>
+          <p class="p-tags">Python · ToT · LLM Reasoning</p>
+        </a>
+        <a class="proj" href="https://github.com/J-ade-g/Hunter" target="_blank" rel="noopener">
+          <div class="p-top">
+            <span class="p-status">completed</span>
+            <span class="p-date">2024</span>
+          </div>
+          <h3>Hunter 创意相机</h3>
+          <p class="p-desc">独立开发的创意相机 Web App。有趣的交互式拍照体验。</p>
+          <div class="p-bar"><div class="p-bar-inner" style="width:100%;background:#5a9;"></div></div>
+          <p class="p-tags">HTML · Node.js</p>
+        </a>
+        <a class="proj" href="https://github.com/J-ade-g/life-tracker" target="_blank" rel="noopener">
+          <div class="p-top">
+            <span class="p-status">completed</span>
+            <span class="p-date">2024</span>
+          </div>
+          <h3>life-tracker</h3>
+          <p class="p-desc">全平台生活记录 App。Flutter 开发，跨平台部署。</p>
+          <div class="p-bar"><div class="p-bar-inner" style="width:100%;background:#5a9;"></div></div>
+          <p class="p-tags">Dart · Flutter</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="build-group seed">
+      <p class="build-group-label">种子</p>
+      <div class="build-cards">
+        <div class="proj">
+          <div class="p-top">
+            <span class="p-status">growing</span>
+            <span class="p-date">2026.05 &rarr;</span>
+          </div>
+          <h3>出海 AI 泛心理产品</h3>
+          <p class="p-desc">正在发芽。如果你也在关注这个方向，欢迎同行。</p>
+          <div class="p-bar"><div class="p-bar-inner" style="width:15%;background:#c4beb7;"></div></div>
+          <p class="p-tags">探索中</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ GARDEN ═══════ -->
+  <section id="garden">
+    <div class="sec-label">
+      <span class="sec-num">03</span>
+      <span class="sec-name">Garden</span>
+    </div>
+    <ul class="garden-list">
+      <li class="garden-item">
+        <span class="gi-date">2026.05</span>
+        <div>
+          <h4>产品经理最重要的不是经验，而是底层综合能力</h4>
+          <p>沟通能力、用户同理心、商业化。AI 时代被进一步放大的能力：表达能力、审美、快速学习迭代、好奇心和创造欲。人用不出自己认知之外的 token。</p>
+          <span class="gi-tag">产品认知</span>
+        </div>
+      </li>
+      <li class="garden-item">
+        <span class="gi-date">2026.04</span>
+        <div>
+          <h4>需求成立的一句话前提</h4>
+          <p>在什么场景下解决用户什么问题 — 绝对不能盲抄竞品。竞品标配功能灰度上线后，数据验证对核心链路无正向贡献，主动决策下线。</p>
+          <span class="gi-tag">产品方法</span>
+        </div>
+      </li>
+      <li class="garden-item">
+        <span class="gi-date">2026.03</span>
+        <div>
+          <h4>Prompt 边界管理：加行为 vs 减行为</h4>
+          <p>LLM 本来不会做的事 &rarr; MUST 让它做。LLM 本来会做但你不想让它做 &rarr; Forbidden 禁止。告诉 AI 五件事：When、How、What NOT、Think before speak。</p>
+          <span class="gi-tag">AI 工程</span>
+        </div>
+      </li>
+      <li class="garden-item">
+        <span class="gi-date">2026.02</span>
+        <div>
+          <h4>Mute 按钮教会我的事</h4>
+          <p>80% 用户对 mute 按钮感到困惑。埋点时间序列分析发现：66% 是 1-3 秒快速连点，76% 发生在 chatting 阶段，仅 9% 在 AI 开口 10 秒内。用户不是想静音 AI，而是想开口说话。数据不会直接告诉你答案，但会留下线索。</p>
+          <span class="gi-tag">数据分析</span>
+        </div>
+      </li>
+      <li class="garden-item">
+        <span class="gi-date">2026.01</span>
+        <div>
+          <h4>AI 产品的核心竞争力：Context 管理和 Session 管理</h4>
+          <p>Memory、连续性、个性化进化 — 这是 AI 和用户交朋友的前提。未来产品会逐渐服务于 Agent，需要思考什么时候封装为 MCP、Skill。</p>
+          <span class="gi-tag">AI 产品</span>
+        </div>
+      </li>
+      <li class="garden-item">
+        <span class="gi-date">2025.12</span>
+        <div>
+          <h4>海外用户的跨文化情感陪伴</h4>
+          <p>独立主导 5 位多地区用户深度访谈。不同文化背景下，对 AI 陪伴的期待、边界和信任建立路径差异很大。</p>
+          <span class="gi-tag">用户研究</span>
+        </div>
+      </li>
+      <li class="garden-item">
+        <span class="gi-date">2025.11</span>
+        <div>
+          <h4>从零搭建感知之门</h4>
+          <p>全栈独立开发的第一款完整 Web App。Node.js + 通义千问 + MongoDB。写了一整套部署文档，理解了 Vercel / Netlify / Cloudflare 的差异。</p>
+          <span class="gi-tag">全栈开发</span>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ═══════ WALK TOGETHER ═══════ -->
+  <section id="walk">
+    <div class="sec-label">
+      <span class="sec-num">04</span>
+      <span class="sec-name">Walk Together &nbsp;/&nbsp; 同行</span>
+    </div>
+    <div class="walk-card">
+      <h2>我们在路上见。</h2>
+      <p class="wsub">如果你也在做产品、研究 AI、关注心理学，或者想聊聊如何在这个时代清醒地工作与生活 &mdash;<br>可以在这里找到我。</p>
+      <div class="walk-links">
+        <a class="walk-btn" href="https://xhslink.com/m/1gRZWl4BUvl" target="_blank" rel="noopener">小红书</a>
+        <a class="walk-btn" href="https://github.com/J-ade-g" target="_blank" rel="noopener">GitHub</a>
+        <a class="walk-btn" href="mailto:502025070036@smail.nju.edu.cn">Email</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="f-stats">
+    <span>小红书 97.9K 赞藏</span>
+    <span>2,996 关注</span>
+  </div>
+  <p class="f-note">Built in public &middot; 2026 &middot; Ever-growing</p>
+</footer>
+
+</body>
+</html>
